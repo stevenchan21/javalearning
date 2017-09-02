@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YSC Printing</title>
+  <link rel='shortcut icon' href='images/favicon.png' type='image/png'/ >
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/cssStyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="javascript/myscript.js"></script>
+  <script>
+    $(function() {
+        var a;
+        var poster;
+        $("#validate").click(function(event) {
+
+                a = $('#product').val();
+                if (a==="Poster"){
+                    // alert(a);
+                    $(".rowinner1").hide();
+                    $(".rowinner2").show();
+                    event.preventDefault();
+                };
+                // else {
+                //     $("product").append("<p>Please select a product</P>");
+                // }
+        });
+
+        $("#Poster").change(function(e) {
+            poster = $("#Poster").val();
+            if(poster==="Indoor"){
+                //alert("Indoor!");
+                $(".PosterTypDes").replaceWith("This type of poster is used indoor. E.g. Home, Exibitions and etc.");
+            };
+        });
+
+        $("#links").click(function(event) {
+            poster = $("#Poster").val();
+            if((poster!=="Indoor")&&(poster!=="Outdoor")){
+                //$(".messageErr1").replaceWith("Please kindly select the above field.");
+                alert(poster);
+            }
+            else if(poster==="Indoor"){
+                window.location.href = "IndoorPosterForm.html";
+            };
+        });
+    });
+  </script>
+</head>
+<body>
+	<div class="container1">
+        <div class="row background_header">
+            <div class="column background_header col-xs-12">
+                <h1 class="header">YSC Printing</h1>
+                <ul class="links">
+                    <li class="space floatLeft"><a href="index.html">Home</a></li>
+                    <li class="space floatLeft"><a href="AboutUs.html">About us</a></li>
+                    <li class="space floatLeft"><a href="#Service">Service</a></li>
+                    <li class="space floatLeft"><a href="#Contact">Contact Us</a></li>
+                </ul>
+            </div><!--column-->
+        </div><!--row-->
+        <div class="row">
+            <h3>Thank you for taking an interest in our service.</h3>
+            <h5>Which product are you looking for?</h5>
+            <br>
+            <div class="rowinner1">
+                Product Selection:
+                <select id="product">
+                    <option selected disabled>Choose here</option>
+                    <option value="Poster">Poster</option>
+                    <option value="Brochure">Brochure</option>
+                    <option value="Namecard">NameCard</option>
+                    <option value="Stand">Pull up Stand</option>
+                </select>
+                <br>
+                <br>
+                <br>
+                <button id="validate">Next</button>
+            </div> <!--rowinner1-->
+            <div class="rowinner2 hide1">
+                    Type of Posters:
+                    <select id="Poster">
+                        <option selected disabled>Choose here</option>
+                        <option value="Indoor">Indoor Poster</option>
+                        <option value="Outdoor">Outdoor Poster</option>
+                        <option value="Banner">Vinyl PVC Banner</option>
+                    </select>
+                    <br>
+                    <br>
+                    <br>
+                    <p class="PosterTypDes"></p>
+                    <br>
+                    <br>
+                    <p class="messageErr1"></p>
+                    <button id="links">Ask for Quote now!</button>
+            </div>
+        </div><!-- 2nd row -->
+    </div><!-- Container -->
+</body>
+</html>
